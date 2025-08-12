@@ -3,6 +3,7 @@ import "./globals.css";
 import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import FlotingButton from "@/components/floting_button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="min-h-screen w-full overflow-x-hidden" suppressHydrationWarning>
+    <html lang="en" className="min-h-screen w-full overflow-x-hidden siz" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
       >
@@ -34,7 +35,8 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
-        >
+        >  
+        <FlotingButton/>
           {children}
           <Toaster />
         </ThemeProvider>
