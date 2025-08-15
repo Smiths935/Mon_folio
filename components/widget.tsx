@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Settings, Sun, Moon, X } from 'lucide-react';
@@ -40,7 +39,7 @@ const Widget = () => {
             const progress = Math.min(elapsed / duration, 1);
 
             // Easing function pour une animation plus naturelle
-            const easeOutElastic = (t) => {
+            const easeOutElastic = (t: any) => {
                 const c4 = (2 * Math.PI) / 3;
                 return t === 0 ? 0 : t === 1 ? 1 : Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
             };
@@ -167,8 +166,8 @@ const Widget = () => {
     // Event listeners
     useEffect(() => {
         if (isDragging) {
-            const handleMouseMoveGlobal = (e) => handleMouseMove(e);
-            const handleTouchMoveGlobal = (e) => {
+            const handleMouseMoveGlobal = (e: any) => handleMouseMove(e);
+            const handleTouchMoveGlobal = (e: any) => {
                 e.preventDefault();
                 handleTouchMove(e);
             };

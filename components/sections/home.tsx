@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 "use client";
-
 import { motion } from "framer-motion";
 import { Download, Linkedin, Mail, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -47,8 +45,8 @@ const socialLinks: SocialLink[] = [
 
 export function Home({ onNavigate }: HomeProps) {
   const roles = ["Full Stack Developer", "Web Developer", "Mobile Developer"];
-  
-  const {language} = useLanguage()
+
+  const { language } = useLanguage()
 
   const renderSocialIcon = (iconName: string) => {
     switch (iconName) {
@@ -78,7 +76,7 @@ export function Home({ onNavigate }: HomeProps) {
     <div className="h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-      <Widget/>
+      <Widget />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -105,11 +103,11 @@ export function Home({ onNavigate }: HomeProps) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-         {
-          language === 'en' ? ` Crafting exceptional digital experiences with JavaScript expertise and
+          {
+            language === 'en' ? ` Crafting exceptional digital experiences with JavaScript expertise and
           a passion for clean, efficient code.` : ` voici la traduction : créer des expériences numériques exceptionnelles grâce à 
             mon expertise javascript et ma passion pour un code claire et optimisé`
-         }
+          }
         </motion.p>
 
         <motion.div
@@ -120,7 +118,7 @@ export function Home({ onNavigate }: HomeProps) {
         >
           <Button size="lg" onClick={() => onNavigate("projects")}>
             {
-              language === 'en' ? "View My Work" :"Voir mon travail"
+              language === 'en' ? "View My Work" : "Voir mon travail"
             }
             <Rocket className="ml-2 h-4 w-4" />
           </Button>
@@ -130,7 +128,7 @@ export function Home({ onNavigate }: HomeProps) {
             onClick={() => onNavigate("contact")}
           >
             {
-              language === 'en' ? "Get in Touch" :"Me contacter"
+              language === 'en' ? "Get in Touch" : "Me contacter"
             }
             <Mail className="ml-2 h-4 w-4" />
           </Button>
@@ -139,9 +137,9 @@ export function Home({ onNavigate }: HomeProps) {
               variant="link"
               size="lg"
             >
-               {
-              language === 'en' ? "Download CV" :"Télécharger le CV"
-            }
+              {
+                language === 'en' ? "Download CV" : "Télécharger le CV"
+              }
               <Download className="ml-2 h-4 w-4 animate-bounce" />
             </Button>
           </Link>
