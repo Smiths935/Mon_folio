@@ -7,9 +7,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, SendToBack } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import Link from "next/link";
+import { TypewriterEffect } from "../ui/typewriter-effect";
+import Widget from "../widget";
 
 export function Contact() {
   const { toast } = useToast();
@@ -66,6 +69,7 @@ export function Contact() {
 
   return (
     <div className="h-full container mx-auto px-4 py-8">
+       <Widget/>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -76,10 +80,12 @@ export function Contact() {
           Contact
         </Badge>
         <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
+        {/* Me contacter */}
         <p className="text-muted-foreground max-w-2xl mx-auto">
           Have a project in mind or want to discuss collaboration opportunities?
           Feel free to reach out, and I'll get back to you as soon as possible.
         </p>
+        {/* Vous avez un projet en tête ou souhaitez discuter d'opportunités de collaboration ? N'hésitez pas à me contacter et je vous répondrai dans le plus brefs délais */}
       </motion.div>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -107,6 +113,7 @@ export function Contact() {
                   <div className="space-y-2">
                     <Input
                       placeholder="Your Name"
+
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -134,6 +141,7 @@ export function Contact() {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
+                    {/* envoi... : Envoyer un message */}
                     <Send className="ml-2 h-4 w-4" />
                   </Button>
                 </form>
@@ -171,6 +179,7 @@ export function Contact() {
           >
             <h4 className="text-lg font-medium text-foreground dark:text-white mb-4">
               Follow Me
+              {/* Suivez-moi */}
             </h4>
             <div className="flex gap-4">
               <motion.a
@@ -244,6 +253,11 @@ export function Contact() {
             </div>
           </motion.div>
         </motion.div>
+      </div>
+      <div className="p-8 space-y-2">
+        <p className="">Vous avez un projet ?</p>
+        <TypewriterEffect className="text-4xl font-bold" words={['Discutons-en']}/>
+        <Link href={'/'} className="flex justify-end hover:underline">lien vers folio <SendToBack/></Link>
       </div>
     </div>
   );

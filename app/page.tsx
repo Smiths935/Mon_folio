@@ -11,8 +11,7 @@ import { Navigation } from "@/components/navigation";
 import { Experience } from "@/components/sections/experiences";
 import SplashScreen from "@/components/sections/SplashScreen";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
-import { Languages } from "lucide-react";
-import FlotingButton from "@/components/floting_button";
+
 
 type Section =
   | "home"
@@ -46,16 +45,20 @@ export default function Portfolio() {
   const handleSplashComplete = () => {
     setShowSplash(false);
   };
+
+
+
   return (
     <>
       {showSplash ? (
         <SplashScreen onComplete={handleSplashComplete} />
       ) : (
-        <div className="min-h-full w-full overflow-hidden bg-background text-foreground relative">
-          {/* <Navigation
+        <div className="min-h-full w-full overflow-hidden bg-background
+         text-foreground relative">
+          <Navigation
             currentSection={currentSection}
             onNavigate={handleSectionChange}
-          /> */}
+          />
           <AnimatePresence mode="wait">
             <motion.main
               key={currentSection}
@@ -77,8 +80,6 @@ export default function Portfolio() {
             
 
           </AnimatePresence>
-
-
         </div>
       )}
     </>

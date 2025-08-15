@@ -6,6 +6,7 @@ import { Home, User, Code, Brain, Mail, BriefcaseBusiness } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 
+
 interface NavigationProps {
   currentSection: string;
   onNavigate: (section: any) => void;
@@ -15,10 +16,10 @@ export function Navigation({ currentSection, onNavigate }: NavigationProps) {
   const navItems = [
     { id: "home", icon: Home, label: "Home" },
     { id: "about", icon: User, label: "About" },
-    { id: "experience", icon:BriefcaseBusiness, label: "Experience" },
+    { id: "experience", icon: BriefcaseBusiness, label: "Experience" },
     { id: "projects", icon: Code, label: "Projects" },
     { id: "skills", icon: Brain, label: "Skills" },
-    { id: "contact", icon: Mail, label: "Contact" },
+    { id: "contact", icon: Mail, label: "Contact" }
   ];
 
 
@@ -67,7 +68,7 @@ export function Navigation({ currentSection, onNavigate }: NavigationProps) {
             <span className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500 dark:from-blue-400 dark:to-primary">
               {"{ YF }"}
             </span>
-            
+
           </div>
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -91,9 +92,7 @@ export function Navigation({ currentSection, onNavigate }: NavigationProps) {
               </Button>
             );
           })}
-          <div className="flex items-center space-x-4">
-          <ModeToggle />
-        </div>
+
         </div>
       </div>
     </header>

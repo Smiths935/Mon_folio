@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import { Code } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -8,6 +9,7 @@ interface SplashScreenProps {
 
 const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   const [progress, setProgress] = useState(0);
+  const { langue } = useLanguage()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,13 +29,13 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         <div className="relative w-32 h-32 mx-auto">
           <div className="absolute inset-0 rounded-full border-4 border-blue-200 dark:border-blue-700 animate-pulse"></div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <Code size={48} className="text-white animate-bounce-slow" />
+            <Code size={48} className="text-white animate-bounce-slow animate-ping" />
           </div>
         </div>
-        
+
         <div className="space-y-4">
           <h1 className="text-4xl font-bold text-white tracking-wider animate-fadeIn">
-            Yvan FOTSO
+              Yvan FOTSO
           </h1>
           <p className="text-blue-100 dark:text-blue-200 text-lg animate-fadeIn" style={{ animationDelay: '0.2s' }}>
             Full-stack Developer
@@ -41,14 +43,16 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         </div>
 
         <div className="w-64 h-2 bg-blue-200 dark:bg-blue-700 rounded-full overflow-hidden">
-          <div 
+          <div
             className="h-full bg-white rounded-full transition-all duration-300 ease-out"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
 
         <p className="text-blue-100 text-sm animate-fadeIn" style={{ animationDelay: '0.4s' }}>
-          Loading your experience...
+          {
+            langue === 'en' ? "Loading your experience..." : "Chargement de l'expérience"
+          }
         </p>
       </div>
     </div>

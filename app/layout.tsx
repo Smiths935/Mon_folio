@@ -3,7 +3,7 @@ import "./globals.css";
 import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
-import FlotingButton from "@/components/floting_button";
+import LanguageProvider from "@/context/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,10 +35,11 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
-        >  
-        <FlotingButton/>
-          {children}
+        >
+          <LanguageProvider>
+            {children}
           <Toaster />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

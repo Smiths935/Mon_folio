@@ -5,11 +5,13 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { BriefcaseBusiness, Users, Globe } from "lucide-react";
+import Widget from "../widget";
 
 export function About() {
   return (
     <div className="h-full container mx-auto px-4 py-4 flex items-center">
       <div className="grid md:grid-cols-2 gap-8 items-center justify-between">
+      <Widget/>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -18,6 +20,7 @@ export function About() {
         >
           <Badge variant="outline" className="mb-4">
             About Me
+            {/* Sur moi */}
           </Badge>
           <div className="flex justify-center lg:justify-center relative z-20">
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center overflow-hidden">

@@ -8,6 +8,8 @@ import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { SocialLink } from "@/types";
 import Link from "next/link";
 import { IconBrandWhatsapp } from "@tabler/icons-react";
+import { useLanguage } from "@/context/LanguageContext";
+import Widget from "../widget";
 
 type Section = "home" | "about" | "projects" | "skills" | "contact";
 
@@ -33,13 +35,19 @@ const socialLinks: SocialLink[] = [
   },
   {
     name: "WhatSapp",
-    url: "tel:+237658241310",
+    url: "https://wa.me/237658241310",
     icon: "WhatSapp",
   },
+  // { celui ci renvoi vers le repertoir telephonique
+  //   name: "WhatSapp",
+  //   url: "tel:+237658241310",
+  //   icon: "WhatSapp",
+  // },
 ];
 
 export function Home({ onNavigate }: HomeProps) {
   const roles = ["Full Stack Developer", "Web Developer", "Mobile Developer"];
+  const {langue} = useLanguage()
 
   const renderSocialIcon = (iconName: string) => {
     switch (iconName) {
@@ -69,7 +77,7 @@ export function Home({ onNavigate }: HomeProps) {
     <div className="h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-
+      <Widget/>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -86,7 +94,6 @@ export function Home({ onNavigate }: HomeProps) {
         </motion.h1>
 
         <TypewriterEffect
-          
           words={roles}
           className="text-xl md:text-2xl text-muted-foreground font-medium"
         />
@@ -97,13 +104,11 @@ export function Home({ onNavigate }: HomeProps) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Crafting exceptional digital experiences with JavaScript expertise and
-          a passion for clean, efficient code.
-
-          {/* 
-            voici la traduction : Concevoir des expériences numériques exceptionnelles grâce à 
-            mon expertise javascript et ma passion pour un code claire et optimisé
-          */}
+         {
+          langue === 'en' ? ` Crafting exceptional digital experiences with JavaScript expertise and
+          a passion for clean, efficient code.` : ` voici la traduction : créer des expériences numériques exceptionnelles grâce à 
+            mon expertise javascript et ma passion pour un code claire et optimisé`
+         }
         </motion.p>
 
         <motion.div
@@ -113,7 +118,9 @@ export function Home({ onNavigate }: HomeProps) {
           transition={{ delay: 0.6 }}
         >
           <Button size="lg" onClick={() => onNavigate("projects")}>
-            View My Work
+            {
+              langue === 'en' ? "View My Work" :"Voir mon travail"
+            }
             <Rocket className="ml-2 h-4 w-4" />
           </Button>
           <Button
@@ -121,7 +128,9 @@ export function Home({ onNavigate }: HomeProps) {
             size="lg"
             onClick={() => onNavigate("contact")}
           >
-            Get in Touch
+            {
+              langue === 'en' ? "Get in Touch" :"Me contacter"
+            }
             <Mail className="ml-2 h-4 w-4" />
           </Button>
           <Link href={'/CV_FotsoYvan.pdf'} download={'CV_FotsoYvan.pdf'} target="_blank" rel="noopenrer">
@@ -129,7 +138,9 @@ export function Home({ onNavigate }: HomeProps) {
               variant="link"
               size="lg"
             >
-              Download CV
+               {
+              langue === 'en' ? "Download CV" :"Télécharger le CV"
+            }
               <Download className="ml-2 h-4 w-4 animate-bounce" />
             </Button>
           </Link>
@@ -142,7 +153,7 @@ export function Home({ onNavigate }: HomeProps) {
         >
           <div className="flex items-center gap-6 justify-center">
             {socialLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.url}
                 target="_blank"
@@ -151,7 +162,7 @@ export function Home({ onNavigate }: HomeProps) {
                 aria-label={link.name}
               >
                 {renderSocialIcon(link.icon)}
-              </a>
+              </Link>
             ))}
           </div>
         </motion.div>
@@ -170,6 +181,11 @@ export function Home({ onNavigate }: HomeProps) {
   skills: ["JavaScript", "React", "Node.js"],
   passion: "Building amazing web experiences"
 };`}
+          {/* {`const developer = {
+  nom: "Fotso Tagne Yvan",
+  compétences: ["JavaScript", "React", "Node.js"],
+  passion: "Créer des expériences web incroyables"
+};`} */}
         </motion.div>
 
         <motion.div
@@ -181,6 +197,9 @@ export function Home({ onNavigate }: HomeProps) {
           {`function createMagic() {
   return passion + skills + creativity;
 }`}
+          {/* {`function createMagic() {
+  return passion + compétences + creativité;
+}`} */}
         </motion.div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Globe, Smartphone, Palette } from "lucide-react";
+import Widget from "../widget";
 
 type ProjectType = "web" | "mobile" | "design" | "all";
 
@@ -106,6 +107,7 @@ export function Projects() {
 
   return (
     <div className="h-full container mx-auto px-4 py-8">
+      <Widget/>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -114,9 +116,11 @@ export function Projects() {
       >
         <Badge variant="outline" className="mb-4">Projects</Badge>
         <h2 className="text-3xl font-bold mb-4">Featured Work</h2>
+        {/* travail en vedette */}
         <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
           A selection of my recent projects showcasing my expertise across web, mobile, and design.
         </p>
+        {/* Une sélection de mes projets récents mettant en valeur mon expertise dans le domaine du web, du mobile et du design */}
 
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           {filterTypes.map(({ type, label, icon: Icon }) => (
