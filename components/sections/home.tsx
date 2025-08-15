@@ -47,7 +47,8 @@ const socialLinks: SocialLink[] = [
 
 export function Home({ onNavigate }: HomeProps) {
   const roles = ["Full Stack Developer", "Web Developer", "Mobile Developer"];
-  const {langue} = useLanguage()
+  
+  const {language} = useLanguage()
 
   const renderSocialIcon = (iconName: string) => {
     switch (iconName) {
@@ -105,7 +106,7 @@ export function Home({ onNavigate }: HomeProps) {
           transition={{ delay: 0.4 }}
         >
          {
-          langue === 'en' ? ` Crafting exceptional digital experiences with JavaScript expertise and
+          language === 'en' ? ` Crafting exceptional digital experiences with JavaScript expertise and
           a passion for clean, efficient code.` : ` voici la traduction : créer des expériences numériques exceptionnelles grâce à 
             mon expertise javascript et ma passion pour un code claire et optimisé`
          }
@@ -119,7 +120,7 @@ export function Home({ onNavigate }: HomeProps) {
         >
           <Button size="lg" onClick={() => onNavigate("projects")}>
             {
-              langue === 'en' ? "View My Work" :"Voir mon travail"
+              language === 'en' ? "View My Work" :"Voir mon travail"
             }
             <Rocket className="ml-2 h-4 w-4" />
           </Button>
@@ -129,7 +130,7 @@ export function Home({ onNavigate }: HomeProps) {
             onClick={() => onNavigate("contact")}
           >
             {
-              langue === 'en' ? "Get in Touch" :"Me contacter"
+              language === 'en' ? "Get in Touch" :"Me contacter"
             }
             <Mail className="ml-2 h-4 w-4" />
           </Button>
@@ -139,7 +140,7 @@ export function Home({ onNavigate }: HomeProps) {
               size="lg"
             >
                {
-              langue === 'en' ? "Download CV" :"Télécharger le CV"
+              language === 'en' ? "Download CV" :"Télécharger le CV"
             }
               <Download className="ml-2 h-4 w-4 animate-bounce" />
             </Button>

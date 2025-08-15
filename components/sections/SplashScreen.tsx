@@ -9,7 +9,8 @@ interface SplashScreenProps {
 
 const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   const [progress, setProgress] = useState(0);
-  const { langue } = useLanguage()
+
+  const { language } = useLanguage()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -35,7 +36,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
 
         <div className="space-y-4">
           <h1 className="text-4xl font-bold text-white tracking-wider animate-fadeIn">
-              Yvan FOTSO
+            Yvan FOTSO
           </h1>
           <p className="text-blue-100 dark:text-blue-200 text-lg animate-fadeIn" style={{ animationDelay: '0.2s' }}>
             Full-stack Developer
@@ -51,7 +52,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
 
         <p className="text-blue-100 text-sm animate-fadeIn" style={{ animationDelay: '0.4s' }}>
           {
-            langue === 'en' ? "Loading your experience..." : "Chargement de l'expérience"
+            language === 'en' ? "Loading your experience..." : "Chargement de l'expérience"
           }
         </p>
       </div>

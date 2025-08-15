@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -8,14 +9,13 @@ import { Settings, Sun, Moon, X } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 const Widget = () => {
-
-    const { langue, changeLanguage } = useLanguage()
     const [isDragging, setIsDragging] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [position, setPosition] = useState({ x: window.innerWidth - 80, y: 100 });
     const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
     const [theme, setTheme] = useState('light');
-    const [language, setLanguage] = useState('fr');
+    const { language, setLanguage } = useLanguage()
+    const [langue, setLangue] = useState('fr');
     const [isHovered, setIsHovered] = useState(false);
     const [velocity, setVelocity] = useState({ x: 0, y: 0 });
     const [lastPosition, setLastPosition] = useState({ x: 0, y: 0, time: 0 });
@@ -209,8 +209,8 @@ const Widget = () => {
     };
 
     const changeLanguages = (langCode: string) => {
-        changeLanguage(langCode)
-        setLanguage(langCode);
+        setLanguage(langCode)
+        setLangue(langCode);
         setIsExpanded(false);
     };
 
