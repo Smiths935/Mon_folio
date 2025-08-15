@@ -20,8 +20,8 @@ const Widget = () => {
     const [lastPosition, setLastPosition] = useState({ x: 0, y: 0, time: 0 });
 
     const widgetRef = useRef(null);
-    const animationFrameRef = useRef(null);
-    const snapTimeoutRef = useRef(null);
+    const animationFrameRef = useRef<number | null>(null);
+    const snapTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const languages = [
         { code: 'fr', name: 'Français', flag: '🇫🇷' },
@@ -161,6 +161,11 @@ const Widget = () => {
         snapTimeoutRef.current = setTimeout(() => {
             snapToEdge();
         }, 50);
+
+        if(snapTimeoutRef.current !== null){
+            clearTimeout(snapTimeoutRef.current)
+            snapTimeoutRef.current=null
+        }
     };
 
     // Event listeners
