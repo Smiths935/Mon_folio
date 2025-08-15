@@ -162,10 +162,6 @@ const Widget = () => {
             snapToEdge();
         }, 50);
 
-        if(snapTimeoutRef.current !== null){
-            clearTimeout(snapTimeoutRef.current)
-            snapTimeoutRef.current=null
-        }
     };
 
     // Event listeners
