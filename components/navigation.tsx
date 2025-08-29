@@ -57,7 +57,7 @@ export function Navigation({ currentSection, onNavigate }: NavigationProps) {
           })}
         </div>
         <div className="flex items-center space-x-4">
-          <ModeToggle />
+          {/* <ModeToggle /> */}
         </div>
       </nav>
 
