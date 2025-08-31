@@ -10,8 +10,9 @@ import { useLanguage } from "@/context/LanguageContext";
 const Widget = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  //const [position, setPosition] = useState({ x: window.innerWidth - 80, y: 100 });
-  const [position, setPosition] = useState({ x: 0, y: 100 });
+  const xwidht = window.innerWidth - 80;
+  const [position, setPosition] = useState({ x: xwidht, y: 100 });
+  //const [position, setPosition] = useState({ x: 0, y: 100 });
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [theme, setTheme] = useState("light");
   const { language, setLanguage } = useLanguage();
@@ -71,10 +72,10 @@ const Widget = () => {
   );
 
   // État pour savoir de quel côté est le widget
-//   const [isOnRightSide, setIsOnRightSide] = useState(
-//     window.innerWidth - 80 > window.innerWidth / 2
-//   );
-  const [isOnRightSide, setIsOnRightSide] = useState(true);
+  const [isOnRightSide, setIsOnRightSide] = useState(
+    xwidht > window.innerWidth / 2
+  );
+  //const [isOnRightSide, setIsOnRightSide] = useState(true);
 
   const [hasMoved, setHasMoved] = useState(false);
 
@@ -211,13 +212,16 @@ const Widget = () => {
     }
   }, [isDragging, handleMouseMove, handleTouchMove]);
 
-    useEffect(() => {
-    const startX = window.innerWidth - 80;
-    setPosition({ x: startX, y: 100 });
-    setIsOnRightSide(startX > window.innerWidth / 2);
-  }, []);
+  //voici la modifiction edu widegt
+  // useEffect(() => {
+  //   const startX = window.innerWidth - 80;
+  //   setPosition({ x: startX, y: 100 });
+  //   setIsOnRightSide(startX > window.innerWidth / 2);
+  // }, []);
 
   // Cleanup
+  
+  
   useEffect(() => {
     return () => {
       if (animationFrameRef.current) {
