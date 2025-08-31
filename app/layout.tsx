@@ -47,8 +47,8 @@ export default function RootLayout({
             <Navigation />
             <PageTransition>
               {children}
-              <Widget />
             </PageTransition>
+              <Widget />
             <Toaster />
           </LanguageProvider>
         </ThemeProvider>
