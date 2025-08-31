@@ -12,7 +12,6 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { TypewriterEffect } from "../ui/typewriter-effect";
-import Widget from "../widget";
 
 export function Contact() {
   const { toast } = useToast();
@@ -69,7 +68,6 @@ export function Contact() {
 
   return (
     <div className="h-full container mx-auto px-4 py-8">
-       <Widget/>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

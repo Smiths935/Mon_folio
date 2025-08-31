@@ -74,8 +74,7 @@ export function Home({ onNavigate }: HomeProps) {
   };
   return (
     <div className="h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+      {/* <div className="absolute inset-0 bg-grid-pattern opacity-5" /> */}
       <Widget />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -105,7 +104,7 @@ export function Home({ onNavigate }: HomeProps) {
         >
           {
             language === 'en' ? ` Crafting exceptional digital experiences with JavaScript expertise and
-          a passion for clean, efficient code.` : ` voici la traduction : créer des expériences numériques exceptionnelles grâce à 
+          a passion for clean, efficient code.` : `créer des expériences numériques exceptionnelles grâce à 
             mon expertise javascript et ma passion pour un code claire et optimisé`
           }
         </motion.p>
@@ -191,7 +190,7 @@ export function Home({ onNavigate }: HomeProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.2 }}
           transition={{ delay: 1.2 }}
-          className="absolute bottom-1/9 ml-10 md:right-10 text-xs font-mono"
+          className="absolute bottom-1/7 ml-10 md:right-10 text-xs font-mono"
         >
           {`function createMagic() {
   return passion + skills + creativity;

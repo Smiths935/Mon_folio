@@ -1,87 +1,193 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
+import { motion } from "framer-motion";
+import { Download, Linkedin, Mail, Rocket } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import { SocialLink } from "@/types";
+import Link from "next/link";
+import { IconBrandWhatsapp } from "@tabler/icons-react";
+import { useLanguage } from "@/context/LanguageContext";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Home } from "@/components/sections/home";
-import { About } from "@/components/sections/about";
-import { Projects } from "@/components/sections/projects";
-import { Skills } from "@/components/sections/skills";
-import { Contact } from "@/components/sections/contact";
-import { Navigation } from "@/components/navigation";
-import { Experience } from "@/components/sections/experiences";
-import SplashScreen from "@/components/sections/SplashScreen";
-import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+const socialLinks: SocialLink[] = [
+  {
+    name: "GitHub",
+    url: "https://github.com/Smiths935",
+    icon: "GitHub",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/yvan-fotso-a64470282",
+    icon: "Linkedin",
+  },
+  {
+    name: "Email",
+    url: "mailto:yvanfotso935@gmail.com",
+    icon: "Mail",
+  },
+  {
+    name: "WhatSapp",
+    url: "https://wa.me/237658241310",
+    icon: "WhatSapp",
+  },
+  // { celui ci renvoi vers le repertoir telephonique
+  //   name: "WhatSapp",
+  //   url: "tel:+237658241310",
+  //   icon: "WhatSapp",
+  // },
+];
 
+export default function page() {
+  const roles = ["Full Stack Developer", "Web Developer", "Mobile Developer"];
 
-type Section =
-  | "home"
-  | "about"
-  | "experience"
-  | "projects"
-  | "skills"
-  | "contact";
+  const { language } = useLanguage();
 
-export default function Portfolio() {
-  const [currentSection, setCurrentSection] = useState<Section>("home");
-  const [direction, setDirection] = useState(0);
-
-  const handleSectionChange = (newSection: Section) => {
-    const sections: Section[] = [
-      "home",
-      "about",
-      "experience",
-      "projects",
-      "skills",
-      "contact",
-    ];
-    const currentIndex = sections.indexOf(currentSection);
-    const newIndex = sections.indexOf(newSection);
-    setDirection(newIndex > currentIndex ? 1 : -1);
-    setCurrentSection(newSection);
+  const renderSocialIcon = (iconName: string) => {
+    switch (iconName) {
+      case "GitHub":
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+        );
+      case "Linkedin":
+        return <Linkedin size={20} />;
+      case "Mail":
+        return <Mail size={20} />;
+      case "WhatSapp":
+        return <IconBrandWhatsapp size={20} />;
+      default:
+        return null;
+    }
   };
-  const [showSplash, setShowSplash] = useState(true);
-  useSmoothScroll(); // Add smooth scroll hook
-
-  const handleSplashComplete = () => {
-    setShowSplash(false);
-  };
-
-
-
   return (
-    <>
-      {showSplash ? (
-        <SplashScreen onComplete={handleSplashComplete} />
-      ) : (
-        <div className="min-h-full w-full overflow-hidden bg-background
-         text-foreground relative">
-          <Navigation
-            currentSection={currentSection}
-            onNavigate={handleSectionChange}
-          />
-          <AnimatePresence mode="wait">
-            <motion.main
-              key={currentSection}
-              initial={{ opacity: 0, x: 100 * direction }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 * direction }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="h-full w-full pt-16"
-            >
-              {currentSection === "home" && (
-                <Home onNavigate={handleSectionChange} />
-              )}
-              {currentSection === "about" && <About />}
-              {currentSection === "experience" && <Experience />}
-              {currentSection === "projects" && <Projects />}
-              {currentSection === "skills" && <Skills />}
-              {currentSection === "contact" && <Contact />}
-            </motion.main>
-            
+    <div className="h-screen flex items-center justify-center relative overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center space-y-5 relative z-10"
+      >
+        <motion.h1
+          className="text-4xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500 dark:from-blue-400 dark:to-primary"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          Yvan FOTSO
+        </motion.h1>
 
-          </AnimatePresence>
-        </div>
-      )}
-    </>
+        <TypewriterEffect
+          words={roles}
+          className="text-xl md:text-2xl text-muted-foreground font-medium"
+        />
+
+        <motion.p
+          className="text-lg text-muted-foreground max-w-2xl mx-auto font-semibold"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          {language === "en"
+            ? ` Crafting exceptional digital experiences with JavaScript expertise and
+          a passion for clean, efficient code.`
+            : `créer des expériences numériques exceptionnelles grâce à 
+            mon expertise javascript et ma passion pour un code claire et optimisé`}
+        </motion.p>
+
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+        >
+          <Link href={"/projects"}>
+            <Button size="lg">
+              {language === "en" ? "View My Work" : "Voir mon travail"}
+              <Rocket className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+          <Link href={"/contact"}>
+            <Button variant="outline" size="lg">
+              {language === "en" ? "Get in Touch" : "Me contacter"}
+              <Mail className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+          <Link
+            href={"/CV_FotsoYvan.pdf"}
+            download={"CV_FotsoYvan.pdf"}
+            target="_blank"
+            rel="noopenrer"
+          >
+            <Button variant="link" size="lg">
+              {language === "en" ? "Download CV" : "Télécharger le CV"}
+              <Download className="ml-2 h-4 w-4 animate-bounce" />
+            </Button>
+          </Link>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          className=""
+        >
+          <div className="flex items-center gap-6 justify-center">
+            {socialLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                aria-label={link.name}
+              >
+                {renderSocialIcon(link.icon)}
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Animated code snippets */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.2 }}
+          transition={{ delay: 1 }}
+          className="absolute top-5 sm:top-12 left-10 text-xs font-mono"
+        >
+          {`const developer = {
+  name: "Fotso Tagne Yvan",
+  skills: ["JavaScript", "React", "Node.js"],
+  passion: "Building amazing web experiences"
+};`}
+          {/* {`const developer = {
+  nom: "Fotso Tagne Yvan",
+  compétences: ["JavaScript", "React", "Node.js"],
+  passion: "Créer des expériences web incroyables"
+};`} */}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.2 }}
+          transition={{ delay: 1.2 }}
+          className="absolute bottom-1/7 ml-10 md:right-10 text-xs font-mono"
+        >
+          {`function createMagic() {
+  return passion + skills + creativity;
+}`}
+          {/* {`function createMagic() {
+  return passion + compétences + creativité;
+}`} */}
+        </motion.div>
+      </div>
+    </div>
   );
 }

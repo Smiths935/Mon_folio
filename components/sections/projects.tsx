@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Globe, Smartphone, Palette } from "lucide-react";
-import Widget from "../widget";
 
 type ProjectType = "web" | "mobile" | "design" | "all";
 
@@ -107,7 +106,6 @@ export function Projects() {
 
   return (
     <div className="h-full container mx-auto px-4 py-8">
-      <Widget/>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

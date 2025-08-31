@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Badge } from '../ui/badge';
-import Widget from '../widget';
 import {ReactIco, Nextjs, TailWindIco, Express, Django, Aws} from '@/public/icon/index';
 
 export function Skills() {
@@ -81,7 +80,6 @@ export function Skills() {
   return (
     <section id="skills" className="px-6 md:px-12 lg:px-24 dark:text-gray-100 min-h-screen flex items-center">
       <div className="max-w-6xl mx-auto w-full">
-        <Widget />
         {/* Titre */}
         <motion.h2
           initial={{ opacity: 0, y: -20 }}

@@ -4,6 +4,9 @@ import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import LanguageProvider from "@/context/LanguageContext";
+import PageTransition from "@/components/PageTransition";
+import { Navigation } from "@/components/navigation";
+import Widget from "@/components/widget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="min-h-screen w-full overflow-x-hidden siz" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="min-h-screen w-full overflow-x-hidden"
+      suppressHydrationWarning
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
       >
@@ -37,8 +44,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
-            {children}
-          <Toaster />
+            <Navigation />
+            <PageTransition>
+              {children}
+              <Widget />
+            </PageTransition>
+            <Toaster />
           </LanguageProvider>
         </ThemeProvider>
       </body>

@@ -16,7 +16,6 @@ import {
   Cloud,
 } from "lucide-react";
 import { Badge } from "../ui/badge";
-import Widget from "../widget";
 
 export function Experience() {
   const [isVisible, setIsVisible] = useState(false);
@@ -112,7 +111,6 @@ Web en collaboration avec des concepteurs ou des clients`,
       className="px-6 md:px-12 lg:px-2 dark:text-gray-800 text-gray-100 min-h-screen flex items-center"
     >
       <div className="max-w-4xl mx-auto w-full">
-        <Widget />
         {/* Titre */}
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
