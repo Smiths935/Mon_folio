@@ -8,5 +8,4 @@ import Aws from "./Aws";
 
 
 
-
 export { Nextjs, ReactIco, GitHub, TailWindIco, Django, Express, Aws };

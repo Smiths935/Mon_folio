@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/toaster";
 import LanguageProvider from "@/context/LanguageContext";
 import PageTransition from "@/components/PageTransition";
 import { Navigation } from "@/components/navigation";
-import Widget from "@/components/widget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,7 +47,6 @@ export default function RootLayout({
             <PageTransition>
               {children}
             </PageTransition>
-              <Widget />
             <Toaster />
           </LanguageProvider>
         </ThemeProvider>
