@@ -1,9 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-"use client";
-import { useEffect, useState } from "react";
-import { Code } from "lucide-react";
-import { useLanguage } from "@/context/LanguageContext";
-import { useRouter } from "next/navigation";
+'use client'
+import { useEffect, useState } from 'react';
+import { Code } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -11,17 +9,14 @@ interface SplashScreenProps {
 
 const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   const [progress, setProgress] = useState(0);
-  const router = useRouter();
 
-  const { language } = useLanguage();
+  const { language } = useLanguage()
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (progress < 100) {
-        setProgress((prev) => Math.min(prev + 1, 100));
-        router.push("/");
+        setProgress(prev => Math.min(prev + 1, 100));
       } else {
-        router.push("/");
         onComplete();
       }
     }, 20);
@@ -35,10 +30,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         <div className="relative w-32 h-32 mx-auto">
           <div className="absolute inset-0 rounded-full border-4 border-blue-200 dark:border-blue-700 animate-pulse"></div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <Code
-              size={48}
-              className="text-white animate-bounce-slow animate-ping"
-            />
+            <Code size={48} className="text-white animate-bounce-slow animate-ping" />
           </div>
         </div>
 
@@ -46,10 +38,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
           <h1 className="text-4xl font-bold text-white tracking-wider animate-fadeIn">
             Yvan FOTSO
           </h1>
-          <p
-            className="text-blue-100 dark:text-blue-200 text-lg animate-fadeIn"
-            style={{ animationDelay: "0.2s" }}
-          >
+          <p className="text-blue-100 dark:text-blue-200 text-lg animate-fadeIn" style={{ animationDelay: '0.2s' }}>
             Full-stack Developer
           </p>
         </div>
@@ -61,13 +50,10 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
           ></div>
         </div>
 
-        <p
-          className="text-blue-100 text-sm animate-fadeIn"
-          style={{ animationDelay: "0.4s" }}
-        >
-          {language === "en"
-            ? "Loading your experience..."
-            : "Chargement de l'expérience"}
+        <p className="text-blue-100 text-sm animate-fadeIn" style={{ animationDelay: '0.4s' }}>
+          {
+            language === 'en' ? "Loading your experience..." : "Chargement de l'expérience"
+          }
         </p>
       </div>
     </div>

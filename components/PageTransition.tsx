@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import SplashScreen from "./sections/SplashScreen";
+import SplashScreen from "@/components/SplashScreen";
 import { useState } from "react";
 import Widget from "./widget";
 

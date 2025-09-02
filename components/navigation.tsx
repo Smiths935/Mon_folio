@@ -4,17 +4,19 @@ import { Home, User, Code, Brain, Mail, BriefcaseBusiness } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Navigation() {
   const pathname = usePathname();
+  const { language } = useLanguage();
 
   const navItems = [
-    { href: "/", icon: Home, label: "Home" },
-    { href: "/about", icon: User, label: "About" },
-    { href: "/experience", icon: BriefcaseBusiness, label: "Experience" },
-    { href: "/projects", icon: Code, label: "Projects" },
-    { href: "/skills", icon: Brain, label: "Skills" },
-    { href: "/contact", icon: Mail, label: "Contact" },
+    { href: "/", icon: Home, label: "Home", labelF:'Accueil' },
+    { href: "/about", icon: User, label: "About", labelF:'A propos' },
+    { href: "/experience", icon: BriefcaseBusiness, label: "Experience", labelF:'Expérience' },
+    { href: "/projects", icon: Code, label: "Projects", labelF:'Projets' },
+    { href: "/skills", icon: Brain, label: "Skills", labelF:'Compétences' },
+    { href: "/contact", icon: Mail, label: "Contact", labelF:'Contact' },
   ];
 
   return (
@@ -35,7 +37,7 @@ export function Navigation() {
               <Link key={item.href} href={item.href}>
                 <Button variant="ghost" className="relative">
                   <Icon className="h-4 w-4 mr-2" />
-                  {item.label}
+                  { language === "en" ? item.label : item.labelF }
                   {isActive && (
                     <motion.div
                       layoutId="activeSection"

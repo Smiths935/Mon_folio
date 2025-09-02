@@ -162,16 +162,17 @@ export default function page() {
           transition={{ delay: 1 }}
           className="absolute top-5 sm:top-12 left-10 text-xs font-mono"
         >
-          {`const developer = {
+          {language === "en"
+            ? `const developer = {
   name: "Fotso Tagne Yvan",
   skills: ["JavaScript", "React", "Node.js"],
   passion: "Building amazing web experiences"
-};`}
-          {/* {`const developer = {
+};`
+            : `const developer = {
   nom: "Fotso Tagne Yvan",
   compétences: ["JavaScript", "React", "Node.js"],
   passion: "Créer des expériences web incroyables"
-};`} */}
+};`}
         </motion.div>
 
         <motion.div
@@ -180,12 +181,13 @@ export default function page() {
           transition={{ delay: 1.2 }}
           className="absolute bottom-1/7 ml-10 md:right-10 text-xs font-mono"
         >
-          {`function createMagic() {
+          {language === "en"
+            ? `function createMagic() {
   return passion + skills + creativity;
-}`}
-          {/* {`function createMagic() {
+}`
+            : `function createMagic() {
   return passion + compétences + creativité;
-}`} */}
+}`}
         </motion.div>
       </div>
     </div>
