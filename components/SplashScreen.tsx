@@ -39,7 +39,9 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             Yvan FOTSO
           </h1>
           <p className="text-blue-100 dark:text-blue-200 text-lg animate-fadeIn" style={{ animationDelay: '0.2s' }}>
-            Full-stack Developer
+            {
+              language === 'en' ? "Full-stack Developer" : "Développeur Full-stack"
+            }
           </p>
         </div>
 
