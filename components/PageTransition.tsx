@@ -30,7 +30,7 @@ export default function PageTransition({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="min-h-screen w-full pt-16"
+            className="min-h-screen w-full pt-16 mb:pb-0 pb-20"
           >
             {children}
           </motion.div>

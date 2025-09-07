@@ -28,13 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="min-h-screen w-full overflow-x-hidden"
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -45,7 +41,9 @@ export default function RootLayout({
           <LanguageProvider>
             <Navigation />
             <PageTransition>
-              {children}
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                {children}
+              </div>
             </PageTransition>
             <Toaster />
           </LanguageProvider>
